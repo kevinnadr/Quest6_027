@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.Button
 import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -57,13 +58,15 @@ fun FormIsian(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
             OutlinedTextField(
-                value = "",
+                value = txtNama,
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
                 label = {Text(text = "Nama Lengkap")},
-                onValueChange = {},
+                onValueChange = {
+                    txtNama = it
+                }
             )
             HorizontalDivider(modifier = Modifier
                 .padding(all = 20.dp)
@@ -71,10 +74,17 @@ fun FormIsian(
             Row {
                 jenisk.forEach {
                         item->
-                    Row (verticalAlignment = Alignment.CenterVertically) {
+                    Row (
+                        modifier= Modifier.selectable(
+                            selected = txtGender == item,
+                            onClick = {
+                                txtGender= item}
+                        ),
+                        verticalAlignment = Alignment.CenterVertically) {
                         RadioButton(
-                            selected = false,
-                            onClick = {item}
+                            selected = txtGender == item,
+                            onClick = {
+                                txtGender= item}
                         )
                         Text(text = item)
                     }
