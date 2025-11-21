@@ -29,7 +29,7 @@ import com.example.quest6_027.model.Siswa
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TampilData(
+fun TampilanData(
     statusUiSiswa: Siswa,
     onBackButonClicked:()-> Unit
 ){
@@ -64,7 +64,7 @@ fun TampilData(
                 Spacer(modifier = Modifier.height(10.dp))
                 Button(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = onBackBtnClick)
+                    onClick = onBackButonClicked)
                 {
                     Text(text = stringResource(id = R.string.back))
                 }
